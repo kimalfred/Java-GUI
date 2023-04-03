@@ -1,0 +1,127 @@
+package JOption1;
+
+import javax.swing.JFrame;       // Libraries of all programs and objects
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.JButton;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+/**
+*Author: Kim Alfred A. Molina
+*Course: BSCS-A2022
+* Date: February 8 2023
+*/
+
+public class JOptionEx extends JFrame
+{
+    private JLabel lbl1;        // GUI objects variables
+    private JTextField txt1;
+
+    private JLabel lbl2;
+    private JTextField txt2;
+
+    private JButton btnComp;
+
+    private JLabel lblSpace;
+
+    private JLabel lblAns;
+    private JTextField txtAns;
+
+    private JButton btnErase;
+	
+    static double num1, num2;
+	
+	//static int loop=0;
+
+    public JOptionEx()
+    {
+        //setLayout(new FlowLayout(FlowLayout.LEFT, 10, 20)); // (alignment, hgap, vgap) // Layout of this program is FlowLayout
+			                                                  
+        setLayout(new FlowLayout(FlowLayout.CENTER)); // (default value)
+			
+        //setLayout(new FlowLayout(FlowLayout.RIGHT)); // depende sa gamit mo
+			
+        //setLayout(new FlowLayout(FlowLayout.LEADING)); // Parehong Left
+			
+        //setLayout(new FlowLayout(FlowLayout.TRAILING)); // Parehong Right
+
+
+
+        lbl1 = new JLabel("Input first digit");   // calling and setting of gui object variable and put it's used in a program
+        add(lbl1);                                // adding of it JFrame which style is FlowLayout etc.
+        txt1 = new JTextField(15);
+        add(txt1);
+
+        lbl2 = new JLabel("Input second digit");
+        add(lbl2);
+        txt2 = new JTextField(15);
+        add(txt2);
+
+        btnComp = new JButton("Compute");    // Calling of GUI object variable btnComp
+        effects theEvent = new effects();    // Initialization of object
+        btnComp.addActionListener(theEvent); // Calling of the event which is theEvent
+        add(btnComp);
+
+        lblSpace = new JLabel("__________________________");
+        add(lblSpace);
+
+        lblAns = new JLabel("The sum is ");
+        //lblAns.setHorizontalTextPosition(SwingConstants.LEFT);
+        //lblAns.setVerticalTextPosition(SwingConstants.BOTTOM);
+        add(lblAns);
+			
+        txtAns = new JTextField(15);
+        txtAns.setHorizontalAlignment(SwingConstants.CENTER);
+        txtAns.setEditable(false);
+        add(txtAns);
+			
+        btnErase = new JButton("Clear");
+        btnErase.addActionListener(theEvent);
+        add(btnErase);
+
+    }
+
+        public class effects implements ActionListener        // Events ng all JButtons
+	{
+	public void actionPerformed(ActionEvent e)
+            {
+
+            if(e.getSource()== btnComp)                      // for btnComp
+		{
+						
+		num1 = Double.parseDouble(txt1.getText());   // getting of values from jTextfield
+		num2 = Double.parseDouble(txt2.getText());
+			
+		double sum = (num1 + num2);                  // for computation process
+	
+		txtAns.setText(String.valueOf(sum));         // for setting the output answer
+									 
+		}
+
+
+                    if(e.getSource()== btnErase)             // for btnErase
+                    {
+                    txt1.setText("");                // for erasing all values
+                    txt2.setText("");
+                    txtAns.setText("");
+                    }
+            }
+
+	}
+
+    public static void main(String[] args)
+    {
+    JOptionEx jfA = new JOptionEx();          // calling of whole class and setting of object jfA
+    jfA.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Closing of JFrame 
+    jfA.setSize(230, 400);                              // (width, height in pixel
+    jfA.setVisible(true);                               // setting visibility
+    jfA.setResizable(true);                             // setting of resizability
+    jfA.setTitle("JFrame Addition");                    // setting of Title
+    }
+
+
+}
