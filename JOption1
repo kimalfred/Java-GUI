@@ -1,0 +1,57 @@
+package JOption1;
+import javax.swing.JOptionPane;
+/**
+*Author: Kim Alfred A. Molina
+*Course: BSCS-A2022
+* Date: February 1 2023
+*/
+
+public class JOption1 
+{
+       
+    public static void main(String[] args) 
+    {
+    int counter = 1;
+    String choice = "yes";
+    
+    while (choice.equalsIgnoreCase("yes")) 
+        {
+           JOptionPane.showMessageDialog(null, "This is an arithmetic calculator");
+           JOptionPane.showMessageDialog(null, "This program has been run " + counter + " time(s)");
+           String num1 = JOptionPane.showInputDialog(null, "Enter first number: ");
+           String num2 = JOptionPane.showInputDialog(null, "Enter second number: ");
+           String operation = JOptionPane.showInputDialog(null, "Enter an operation: \n" +
+             "Type 1 for addition \n" +
+             "Type 2 for subtraction \n" +
+             "Type 3 for multiplication \n" +
+             "Type 4 for division \n");
+           int result;
+
+           switch (operation) 
+            {
+             case "1":
+               result = Integer.parseInt(num1) + Integer.parseInt(num2);
+               JOptionPane.showMessageDialog(null, num1 + " + " + num2 + " = " + result);
+               break;
+             case "2":
+               result = Integer.parseInt(num1) - Integer.parseInt(num2);
+               JOptionPane.showMessageDialog(null, num1 + " - " + num2 + " = " + result);
+               break;
+             case "3":
+               result = Integer.parseInt(num1) * Integer.parseInt(num2);
+               JOptionPane.showMessageDialog(null, num1 + " * " + num2 + " = " + result);
+               break;
+             case "4":
+               result = Integer.parseInt(num1) / Integer.parseInt(num2);
+               JOptionPane.showMessageDialog(null, num1 + " / " + num2 + " = " + result);
+               break;
+             default:
+               JOptionPane.showMessageDialog(null, "Invalid Operation");
+               break;
+            }
+           counter++;
+           choice = JOptionPane.showInputDialog(null, "Do you want to rerun the program? (yes/no)");
+        }
+JOptionPane.showMessageDialog(null, "Thank you for using this program");
+    }
+}
