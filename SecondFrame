@@ -1,0 +1,46 @@
+package framegui;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import java.awt.FlowLayout;
+import java.awt.LayoutManager;
+import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class SecondFrame extends JFrame
+{
+    JLabel label;
+	
+    JButton button;
+	
+	SecondFrame()
+	{
+            label = new JLabel("My second screen");
+		
+            add(label);
+		
+            button = new JButton("Back");
+            effects theEvent = new effects();
+            button.addActionListener(theEvent);
+            add(button);
+		
+            setLayout(new FlowLayout());
+	}
+		
+            public class effects implements ActionListener
+		{
+                    public void actionPerformed(ActionEvent event)
+			{
+                            if(event.getSource() == button)
+                            {
+                                MainFrame fr = new MainFrame();
+				
+				fr.setVisible(true);
+				fr.setSize(400,400);
+				fr.setTitle("My Frame");
+					
+				dispose();
+                            }
+			}
+		}
+}
