@@ -1,0 +1,59 @@
+package framegui;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.FlowLayout;
+import java.awt.LayoutManager;
+//import java.awt.LayoutManager
+
+
+public class MainFrame extends JFrame 
+{
+    static JTextField text;
+    static JButton button;
+	
+    public MainFrame()
+    {
+	setLayout(new FlowLayout());
+		
+	text = new JTextField(20);
+	add(text);
+		
+		
+	button = new JButton("okay");
+	effects theEvent = new effects();
+	button.addActionListener(theEvent);
+	add(button);
+	
+	
+    }	
+		
+	public class effects implements ActionListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+			if(event.getSource() == button)
+			{
+				SecondFrame fr = new SecondFrame();
+				
+				fr.setVisible(true);
+				fr.setSize(400,400);
+				fr.setTitle("My Second Frame");
+					
+				dispose();
+			}
+		}
+	}
+
+	public static void main(String[] args)
+	{
+		MainFrame frame = new MainFrame();
+		
+		frame.setVisible(true);
+		frame.setSize(400, 400);
+		frame.setTitle("My frame");
+	}
+
+}
