@@ -1,0 +1,147 @@
+package gui;
+/**
+ * @(#)multiOpApplet.java
+ *
+ *
+ * @author
+ * @version 1.00 2013/2/28
+ */
+
+//import java.awt.*;
+import java.awt.Label;
+import javax.swing.JLabel;
+
+import java.awt.Button;
+
+import java.awt.TextField;
+import javax.swing.JTextField;
+
+import javax.swing.SwingConstants;
+
+import java.applet.Applet;
+import java.awt.FlowLayout;
+import javax.swing.JFrame;
+//import javax.swing.JOptionPane;
+
+//import java.awt.event.*;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class multiOpApplet extends Applet implements ActionListener
+{
+	
+		Label lblInput1 = new Label("Input your first digit:"); // Variable declaration
+		TextField txtInput1 = new TextField(15);
+
+		Label lblInput2 = new Label("Input your second digit:");
+		TextField txtInput2 = new TextField(15);
+
+		Button btnComp = new Button("Compute");
+
+		Label lblSpace = new Label("__________________________");
+
+		JLabel jlblSum = new JLabel("The sum is:",SwingConstants.CENTER); // sum
+		TextField txtSum = new TextField(15);
+
+		Label lblDiff = new Label("The difference is:"); //difference
+		JTextField jtxtDiff = new JTextField(15);
+
+		JLabel lblProd = new JLabel("The product is:",SwingConstants.CENTER); //product
+		TextField txtProd = new TextField(15);
+
+		Label lblQuo = new Label("The quotient is:"); //quotient
+		JTextField jtxtQuo = new JTextField(15);
+		
+		Button btnClear = new Button("Clear");
+		
+		//JFrame jfr = new JFrame();
+		
+		//jfr.setSize(200, 265);
+		//jfr.pack();
+			
+		//jfr.setTitle("JFrame Addition");
+		//jfr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		//jfr.setVisible(true)
+		
+
+		    public void init() // Iniatialization and Calling
+		    {
+		    	/*jfr.setLayout(new FlowLayout(FlowLayout.LEFT));
+		    	jfr.setSize(203, 400);
+		        jfr.pack();*/ // walang gamit sa applet
+		    	
+			   	add(lblInput1);
+				//prelimLabel.setForeground(Color.RED);
+				add(txtInput1);
+				//prelimTextField.setForeground(Color.PINK);
+
+				add(lblInput2);
+				add(txtInput2);
+				//midtermTextField.setBackground(Color.GRAY);
+
+				add(btnComp);
+				btnComp.addActionListener(this);
+
+				add(lblSpace);
+
+				add(jlblSum); //para sa sum
+				add(txtSum);
+				txtSum.setEditable(false);
+
+				add(lblDiff); //para sa difference
+				add(jtxtDiff);
+				jtxtDiff.setHorizontalAlignment(SwingConstants.CENTER);
+				jtxtDiff.setEditable(false);
+
+				add(lblProd); //para sa product
+				txtProd.setEditable(false);
+				add(txtProd);
+				
+
+				add(lblQuo);
+				jtxtQuo.setEditable(false);
+				jtxtQuo.setHorizontalAlignment(SwingConstants.CENTER);
+				add(jtxtQuo); //para sa quotient
+				
+				add(btnClear);
+				btnClear.addActionListener(this);
+				
+
+		    }
+
+    				public void actionPerformed(ActionEvent e) // event
+					{
+
+						//JOptionPane.showMessageDialog(null,"Password Accepted","Password",JOptionPane.INFORMATION_MESSAGE);
+						
+						double input1 = Double.parseDouble(txtInput1.getText());
+
+						double input2 = Double.parseDouble(txtInput2.getText());
+
+						double sum = input1 + input2;
+						txtSum.setText(String.valueOf(sum));
+
+						double diff = input1 - input2;
+						jtxtDiff.setText(String.valueOf(diff));
+
+						double prod = input1 * input2;
+						txtProd.setText(String.valueOf(prod));
+
+						double quo = input1 / input2;
+						jtxtQuo.setText(String.valueOf(quo));
+						
+						if (e.getSource() == btnClear)
+							{
+								txtInput1.setText("");
+								txtInput2.setText("");
+								txtSum.setText("");
+								jtxtDiff.setText("");
+								txtProd.setText("");
+								jtxtQuo.setText("");	
+							}
+
+					}
+					
+					
+}
